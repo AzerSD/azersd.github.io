@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "AI-Powered Portfolio Website",
+    "description": "Built a modern portfolio website using React, TypeScript, and Express.js with AI integration for dynamic content generation",
+    "category": "project",
+    "link": "https://github.com/example/portfolio",
+    "date": "2024-12-15T00:00:00.000Z",
+    "technologies": ["React", "TypeScript", "Express.js", "Tailwind CSS", "AI Integration"]
+  },
+  {
+    "id": 2,
+    "title": "Cloud Computing Hackathon Winner",
+    "description": "Won first place in the CloudTech Hackathon 2024 with a serverless application for real-time data processing",
+    "category": "hackathon",
+    "link": "https://cloudtech-hackathon.com/winners",
+    "date": "2024-11-20T00:00:00.000Z",
+    "technologies": ["AWS Lambda", "Node.js", "DynamoDB", "API Gateway", "WebSockets"]
+  },
+  {
+    "id": 3,
+    "title": "Full-Stack E-commerce Platform",
+    "description": "Developed a comprehensive e-commerce solution with payment integration, inventory management, and admin dashboard",
+    "category": "project",
+    "link": "https://github.com/example/ecommerce",
+    "date": "2024-10-01T00:00:00.000Z",
+    "technologies": ["Next.js", "PostgreSQL", "Stripe", "Redis", "Docker"]
+  },
+  {
+    "id": 4,
+    "title": "Tech Conference Speaker",
+    "description": "Delivered a keynote presentation on 'Modern Web Development Practices' at WebDev Summit 2024",
+    "category": "event",
+    "link": "https://webdev-summit.com/speakers",
+    "date": "2024-09-15T00:00:00.000Z",
+    "technologies": ["Public Speaking", "Web Development", "Best Practices"]
+  },
+  {
+    "id": 5,
+    "title": "Open Source Contribution",
+    "description": "Major contributor to popular React component library with 50+ merged PRs and 1000+ GitHub stars",
+    "category": "project",
+    "link": "https://github.com/example/react-components",
+    "date": "2024-08-01T00:00:00.000Z",
+    "technologies": ["React", "TypeScript", "Storybook", "Jest", "Open Source"]
+  }
+]

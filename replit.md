@@ -1,102 +1,94 @@
-# AceCloud - Secure Cloud Platform
+# Portfolio Website
 
 ## Overview
 
-AceCloud is a modern full-stack web application built with TypeScript, featuring a React frontend and Express backend. The application provides a secure cloud platform with authentication capabilities, supporting both traditional login credentials and OAuth integration (Zitadel). The system uses a PostgreSQL database with Drizzle ORM for data persistence and includes a comprehensive UI component library built with Radix UI and Tailwind CSS.
+A modern portfolio website built with TypeScript, featuring a React frontend and Express backend. The application showcases a dynamic timeline of projects, hackathon wins, and speaking events. Timeline data is served from a JSON file for easy content management without database dependencies.
 
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Content Management: Timeline items served from JSON file instead of database.
+Focus: Portfolio-only application without authentication features.
+
+## Recent Changes (July 2025)
+
+- **Removed Authentication System**: Eliminated all login/register functionality and related routes
+- **Simplified Data Storage**: Replaced database-driven timeline with JSON file (`data/timeline.json`)
+- **Streamlined Routing**: Removed login and dashboard pages, keeping only portfolio view
+- **Cleaned Architecture**: Removed auth middleware, session management, and database schemas
 
 ## System Architecture
 
 ### Frontend Architecture
 - **Framework**: React 18 with TypeScript
-- **Routing**: Wouter for lightweight client-side routing
+- **Routing**: Wouter for lightweight client-side routing (simplified to portfolio-only)
 - **State Management**: TanStack Query (React Query) for server state management
 - **Styling**: Tailwind CSS with custom CSS variables for theming
 - **UI Components**: Radix UI primitives with custom shadcn/ui components
-- **Forms**: React Hook Form with Zod validation
 - **Build Tool**: Vite for fast development and optimized builds
 
 ### Backend Architecture
 - **Runtime**: Node.js with Express.js framework
 - **Language**: TypeScript with ES modules
-- **Authentication**: JWT-based authentication with HTTP-only cookies
-- **Password Hashing**: bcryptjs for secure password storage
-- **Database**: PostgreSQL with Drizzle ORM
-- **Database Provider**: Neon Database (@neondatabase/serverless)
-- **Session Management**: Database-backed sessions with connect-pg-simple
+- **Data Storage**: JSON file-based timeline data serving
+- **No Database**: Removed all PostgreSQL/Drizzle dependencies
 
 ## Key Components
 
-### Authentication System
-- **JWT Tokens**: Secure token-based authentication with 7-day expiration
-- **Session Management**: Database-backed sessions for enhanced security
-- **Password Security**: bcrypt hashing with salt rounds
-- **Dual Authentication**: Support for traditional login and OAuth (Zitadel)
-- **HTTP-Only Cookies**: Secure token storage to prevent XSS attacks
-
-### Database Schema
-- **Users Table**: Stores user credentials, profile information, and OAuth data
-- **Sessions Table**: Manages active user sessions with token validation
-- **Flexible Authentication**: Supports both password-based and OAuth-only users
+### Portfolio Timeline System
+- **JSON Data Source**: Timeline items stored in `data/timeline.json`
+- **Dynamic Loading**: Server reads JSON file and serves via API endpoint
+- **Category Support**: Projects, hackathons, and events with different styling
+- **Technology Tags**: Each timeline item includes technology arrays
 
 ### UI Component System
 - **Design System**: Consistent theming with CSS custom properties
 - **Component Library**: Comprehensive set of reusable UI components
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
 - **Accessibility**: Built on Radix UI primitives for ARIA compliance
-- **Brand Identity**: Custom AceCloud branding with gradient design elements
+- **Animated Experience**: Framer Motion for smooth timeline animations
 
 ## Data Flow
 
-1. **User Authentication**: Client sends credentials to `/api/auth/login`
-2. **Token Generation**: Server validates credentials and generates JWT token
-3. **Session Creation**: Server creates database session record
-4. **Cookie Setting**: HTTP-only cookie set for secure token storage
-5. **Protected Routes**: Client includes cookies in requests for authentication
-6. **Token Validation**: Server validates JWT and checks session validity
-7. **Data Fetching**: TanStack Query manages server state and caching
+1. **Timeline Request**: Client requests `/api/timeline`
+2. **JSON File Read**: Server reads `data/timeline.json` from filesystem
+3. **Data Serving**: JSON timeline data returned to client
+4. **React Query Caching**: TanStack Query manages timeline data caching
+5. **Timeline Rendering**: Portfolio page displays timeline with animations
 
 ## External Dependencies
 
-### Database
-- **Neon Database**: Serverless PostgreSQL database
-- **Drizzle ORM**: Type-safe database operations and migrations
-- **Connection**: Environment-based DATABASE_URL configuration
+### Removed Dependencies
+- **No Database**: Removed PostgreSQL, Drizzle ORM, and related packages
+- **No Authentication**: Removed JWT, bcryptjs, and session management
+- **No OAuth**: Removed Zitadel integration
 
-### Authentication
-- **JWT**: JSON Web Token for stateless authentication
-- **bcryptjs**: Password hashing and validation
-- **Zitadel**: OAuth provider integration (configured but not fully implemented)
-
-### UI Libraries
+### Current Dependencies
 - **Radix UI**: Accessible component primitives
 - **Tailwind CSS**: Utility-first CSS framework
 - **Lucide React**: Icon library for consistent iconography
+- **Framer Motion**: Animation library for timeline interactions
+- **TanStack Query**: Server state management for API calls
 
 ## Deployment Strategy
 
 ### Build Process
 - **Frontend**: Vite builds React app to `dist/public`
 - **Backend**: esbuild bundles Express server to `dist/index.js`
-- **Database**: Drizzle migrations managed through `drizzle-kit`
+- **Data**: Timeline JSON file served directly from filesystem
 
 ### Environment Configuration
 - **Development**: `NODE_ENV=development` with hot reloading
 - **Production**: `NODE_ENV=production` with optimized builds
-- **Database**: `DATABASE_URL` environment variable required
+- **No Database**: Removed all database environment variables
 
 ### Development Workflow
 - **Hot Reloading**: Vite middleware integrated with Express in development
 - **Type Safety**: TypeScript compilation checking across all modules
-- **Database Migrations**: `npm run db:push` for schema updates
+- **Content Updates**: Edit `data/timeline.json` to update portfolio content
 - **Code Quality**: ESLint and Prettier integration (configured in components.json)
 
 ### Security Considerations
-- **Cookie Security**: Secure flag in production, SameSite strict policy
+- **Static Content**: JSON file served through API endpoint
 - **CORS**: Configured for development with Replit integration
-- **Environment Variables**: Sensitive data stored in environment variables
-- **Password Security**: Salted bcrypt hashing with 10 rounds
-- **Session Management**: Database-backed sessions with expiration handling
+- **No Authentication**: Removed all authentication-related security considerations
